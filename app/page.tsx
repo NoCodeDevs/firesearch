@@ -3,85 +3,165 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header with logo */}
-      <header className="px-4 sm:px-6 lg:px-8 py-4">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <a
-            href="https://firecrawl.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/firecrawl-logo-with-fire.png"
-              alt="Firecrawl Logo"
-              width={113}
-              height={24}
-              className="w-[113px] h-auto"
-            />
-          </a>
-          <a
-            href="https://github.com/mendableai/firesearch"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="justify-center whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none rounded-[10px] text-sm transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50 bg-[#36322F] text-[#fff] hover:bg-[#4a4542] disabled:bg-[#8c8885] disabled:hover:bg-[#8c8885] [box-shadow:inset_0px_-2.108433723449707px_0px_0px_#171310,_0px_1.2048193216323853px_6.325301647186279px_0px_rgba(58,_33,_8,_58%)] hover:translate-y-[1px] hover:scale-[0.98] hover:[box-shadow:inset_0px_-1px_0px_0px_#171310,_0px_1px_3px_0px_rgba(58,_33,_8,_40%)] active:translate-y-[2px] active:scale-[0.97] active:[box-shadow:inset_0px_1px_1px_0px_#171310,_0px_1px_2px_0px_rgba(58,_33,_8,_30%)] disabled:shadow-none disabled:hover:translate-y-0 disabled:hover:scale-100 h-10 px-4 py-2 font-medium flex items-center gap-2"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-            </svg>
-            Use this template
-          </a>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
+      {/* Advanced Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Primary morphing gradient blobs */}
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-purple-500/30 to-pink-500/20 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-emerald-500/25 to-teal-500/15 rounded-full blur-3xl animate-float-delayed"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-blue-500/15 to-purple-500/10 rounded-full blur-3xl animate-pulse-glow"></div>
 
-      {/* Hero section */}
-      <div className="px-4 sm:px-6 lg:px-8 pt-8 pb-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-[2.5rem] lg:text-[3.8rem] text-[#36322F] dark:text-white font-semibold tracking-tight leading-[0.9] opacity-0 animate-fade-up [animation-duration:500ms] [animation-delay:200ms] [animation-fill-mode:forwards]">
-            <span className="relative px-1 text-transparent bg-clip-text bg-gradient-to-tr from-red-600 to-yellow-500 inline-flex justify-center items-center">
-              Firesearch
-            </span>
-            <span className="block leading-[1.1] opacity-0 animate-fade-up [animation-duration:500ms] [animation-delay:400ms] [animation-fill-mode:forwards]">
-              Deep Research
-            </span>
-          </h1>
-          <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400 opacity-0 animate-fade-up [animation-duration:500ms] [animation-delay:600ms] [animation-fill-mode:forwards]">
-            AI-powered search powered by Firecrawl and LangGraph
-          </p>
-        </div>
+        {/* Secondary floating elements */}
+        <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-gradient-to-br from-cyan-500/20 to-blue-500/15 rounded-full blur-2xl animate-bounce-in" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-1/4 left-1/4 w-40 h-40 bg-gradient-to-br from-orange-500/15 to-red-500/10 rounded-full blur-2xl animate-bounce-in" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-3/4 right-1/3 w-24 h-24 bg-gradient-to-br from-indigo-500/20 to-violet-500/15 rounded-full blur-2xl animate-bounce-in" style={{ animationDelay: '3s' }}></div>
+
+        {/* Mesh gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-mesh opacity-30"></div>
+
+        {/* Subtle particle effect */}
+        <div className="absolute inset-0 particles"></div>
       </div>
 
-      {/* Main content wrapper */}
-      <div className="flex-1">
-        {/* Chat component */}
-        <Chat />
-      </div>
+      <div className="relative z-10 min-h-screen flex flex-col">
+        {/* Sticky Pill Navigation */}
+        <div className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 px-6">
+          <nav className="max-w-7xl mx-auto">
+            <div className="glass-premium rounded-full px-6 md:px-8 py-3 border border-white/10 shadow-glow-lg backdrop-blur-xl bg-slate-900/80">
+              <div className="flex items-center gap-4 md:gap-6">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-glow">
+                    <span className="text-white font-bold text-sm md:text-lg">🔥</span>
+                  </div>
+                  <div className="hidden sm:block">
+                    <h1 className="text-lg md:text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                      FireSearch AI
+                    </h1>
+                  </div>
+                  <div className="sm:hidden">
+                    <h1 className="text-base font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                      FireSearch
+                    </h1>
+                  </div>
+                </div>
 
-      {/* Footer */}
-      <footer className="px-4 sm:px-6 lg:px-8 py-8 mt-auto">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            Powered by{' '}
-            <a
-              href="https://firecrawl.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-orange-600 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300 font-medium"
-            >
-              Firecrawl
-            </a>
-            {' and '}
-            <a
-              href="https://www.langchain.com/langgraph"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-orange-600 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300 font-medium"
-            >
-              LangGraph
-            </a>
-          </p>
+                {/* Tech Stack Connectors */}
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1">
+                    {/* Firecrawl Connector */}
+                    <div className="w-6 h-6 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center shadow-glow border border-slate-700">
+                      <span className="text-white text-xs">⚡</span>
+                    </div>
+                    {/* Connection Line */}
+                    <div className="w-3 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 data-flow-line"></div>
+                    {/* OpenAI Connector */}
+                    <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center shadow-glow border border-slate-700" style={{ animationDelay: '0.2s' }}>
+                      <span className="text-white text-xs">🤖</span>
+                    </div>
+                    {/* Connection Line */}
+                    <div className="w-3 h-0.5 bg-gradient-to-r from-green-500 to-purple-500 data-flow-line" style={{ animationDelay: '0.4s' }}></div>
+                    {/* LangGraph Connector */}
+                    <div className="w-6 h-6 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center shadow-glow border border-slate-700" style={{ animationDelay: '0.6s' }}>
+                      <span className="text-white text-xs">🧠</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    <span className="text-slate-300 font-medium hidden md:inline">Connected</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
         </div>
-      </footer>
+
+        {/* Main Content */}
+        <main className="flex-1 relative px-6 pb-12 pt-24 md:pt-28">
+          <Chat />
+        </main>
+
+        {/* Enhanced Footer */}
+        <footer className="relative z-20 border-t border-white/10 bg-gradient-to-t from-slate-900/80 to-transparent backdrop-blur-xl">
+          <div className="max-w-7xl mx-auto px-6 py-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              {/* Brand Section */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-glow">
+                    <span className="text-white font-bold text-xl">🔥</span>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                      FireSearch AI
+                    </h3>
+                    <p className="text-sm text-slate-400">Market Intelligence Platform</p>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  Empowering entrepreneurs with AI-powered market research, competitive analysis, and real-time insights across 40+ industries.
+                </p>
+              </div>
+
+
+
+              {/* Tech Stack */}
+              <div className="space-y-4">
+                <h4 className="font-semibold text-white">Powered By</h4>
+                <div className="space-y-3">
+                  <a
+                    href="https://firecrawl.dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 bg-white/5 border border-white/10 hover:border-white/20 rounded-xl text-slate-300 hover:text-white transition-all duration-300 group hover-lift"
+                  >
+                    <div className="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                      <span className="text-lg">⚡</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Firecrawl</div>
+                      <div className="text-xs text-slate-400">Data Extraction</div>
+                    </div>
+                  </a>
+                  <a
+                    href="https://www.langchain.com/langgraph"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 bg-white/5 border border-white/10 hover:border-white/20 rounded-xl text-slate-300 hover:text-white transition-all duration-300 group hover-lift"
+                  >
+                    <div className="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                      <span className="text-lg">🧠</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">LangGraph</div>
+                      <div className="text-xs text-slate-400">AI Orchestration</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Section */}
+            <div className="pt-8 border-t border-white/10">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-6 text-sm text-slate-400">
+                  <span className="font-medium">© 2024 FireSearch AI</span>
+                  <span className="hidden md:block text-white/20">•</span>
+                  <span className="font-medium">Built for Entrepreneurs</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 text-xs text-slate-500">
+                    <span>Status:</span>
+                    <div className="flex items-center gap-1">
+                      <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></div>
+                      <span className="text-emerald-400 font-medium">All Systems Operational</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 }

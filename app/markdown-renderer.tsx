@@ -14,10 +14,10 @@ export const MarkdownRenderer = memo(function MarkdownRenderer({
   // Simple markdown parsing
   const parseMarkdown = (text: string) => {
     // Handle links [text](url) - must come before citations
-    let parsed = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:text-orange-700 underline">$1</a>');
+    let parsed = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 underline">$1</a>');
     
     // Handle citations [1], [2], etc.
-    parsed = parsed.replace(/\[(\d+)\]/g, '<sup class="citation text-orange-600 cursor-pointer hover:text-orange-700">[$1]</sup>');
+    parsed = parsed.replace(/\[(\d+)\]/g, '<sup class="citation text-emerald-400 cursor-pointer hover:text-emerald-300 font-medium">[$1]</sup>');
     
     // Bold text
     parsed = parsed.replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold">$1</strong>');
@@ -78,10 +78,10 @@ export const MarkdownRenderer = memo(function MarkdownRenderer({
     parsed = processedLines.join('\n');
     
     // Code blocks
-    parsed = parsed.replace(/```([\s\S]*?)```/g, '<pre class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg overflow-x-auto my-3"><code>$1</code></pre>');
+    parsed = parsed.replace(/```([\s\S]*?)```/g, '<pre class="bg-slate-800 border border-slate-700 p-3 rounded-lg overflow-x-auto my-3"><code class="text-slate-200">$1</code></pre>');
     
     // Inline code
-    parsed = parsed.replace(/`(.+?)`/g, '<code class="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm font-mono">$1</code>');
+    parsed = parsed.replace(/`(.+?)`/g, '<code class="bg-slate-800 border border-slate-700 px-1.5 py-0.5 rounded text-sm font-mono text-slate-200">$1</code>');
     
     // Paragraphs
     parsed = parsed.split('\n\n').map(para => {
@@ -99,12 +99,12 @@ export const MarkdownRenderer = memo(function MarkdownRenderer({
   };
 
   return (
-    <div className="text-gray-700 dark:text-gray-300">
+    <div className="text-slate-200">
       <div 
         dangerouslySetInnerHTML={{ __html: parseMarkdown(content) }} 
-        className="markdown-content leading-relaxed [&>p]:text-sm [&>ul]:text-sm [&>ol]:text-sm [&_li]:text-sm [&>h1]:text-gray-900 [&>h1]:dark:text-gray-100 [&>h2]:text-gray-900 [&>h2]:dark:text-gray-100 [&>h3]:text-gray-900 [&>h3]:dark:text-gray-100 [&>h4]:text-gray-900 [&>h4]:dark:text-gray-100"
+        className="markdown-content leading-relaxed [&>p]:text-slate-200 [&>p]:text-sm [&>ul]:text-slate-200 [&>ul]:text-sm [&>ol]:text-slate-200 [&>ol]:text-sm [&_li]:text-slate-200 [&_li]:text-sm [&>h1]:text-slate-100 [&>h1]:font-bold [&>h2]:text-slate-100 [&>h2]:font-semibold [&>h3]:text-slate-100 [&>h3]:font-semibold [&>h4]:text-slate-100 [&>h4]:font-semibold [&_strong]:text-slate-100 [&_strong]:font-semibold [&_em]:text-slate-300"
       />
-      {streaming && <span className="animate-pulse text-orange-500">▊</span>}
+      {streaming && <span className="animate-pulse text-emerald-400">▊</span>}
     </div>
   );
 });
