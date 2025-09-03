@@ -1314,7 +1314,7 @@ export function Chat() {
     isSearch?: boolean;
     searchResults?: string;
   }>>([]);
-  const [input, setInput] = useState('');
+
   const [isSearching, setIsSearching] = useState(false);
   const [selectedIndustry, setSelectedIndustry] = useState<string | null>(null);
   const [firecrawlApiKey, setFirecrawlApiKey] = useState<string>('');
@@ -1564,8 +1564,7 @@ export function Chat() {
   const handleQuestionSelect = async (question: string) => {
     console.log('Question selected:', question);
     if (question) {
-      // Clear the input immediately when question is selected
-      setInput('');
+
 
       // Check if API key is available, if not show modal
       if (!hasApiKey) {
