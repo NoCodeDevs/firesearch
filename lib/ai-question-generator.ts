@@ -158,7 +158,7 @@ function getIndustryDescription(industryName: string): string {
 interface AIResponse {
   questions: Array<{
     text: string;
-    category?: string;
+    category?: 'market-size' | 'competition' | 'trends' | 'challenges' | 'opportunities' | 'strategy' | 'monetization' | 'regulatory';
     estimatedValue?: string;
   }>;
 }
@@ -171,7 +171,7 @@ function processAIResponse(response: AIResponse, industryName: string): AIQuesti
   return response.questions.slice(0, AI_QUESTION_CONFIG.QUESTION_COUNT).map((q, index: number) => ({
     id: `${industryName.toLowerCase().replace(/\s+/g, '-')}-q${index + 1}`,
     text: q.text,
-    category: q.category || 'strategy',
+    category: (q.category || 'strategy') as AIQuestion['category'],
     estimatedValue: q.estimatedValue || 'Strategic insight for business planning'
   }));
 }
