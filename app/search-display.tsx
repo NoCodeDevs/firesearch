@@ -243,7 +243,7 @@ export function SearchDisplay({ events }: { events: SearchEvent[] }) {
   const [startTime, setStartTime] = useState<number | null>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [, setCompletedPhases] = useState<Set<string>>(new Set());
-  const [currentPhase, setCurrentPhase] = useState<SearchPhase | null>(null);
+
   const [scrapedCount, setScrapedCount] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
   
@@ -300,7 +300,6 @@ export function SearchDisplay({ events }: { events: SearchEvent[] }) {
     
     const latestPhaseEvent = events.findLast(e => e.type === 'phase-update');
     if (latestPhaseEvent?.type === 'phase-update') {
-      setCurrentPhase(latestPhaseEvent.phase);
       
       const phases: SearchPhase[] = ['understanding', 'planning', 'searching', 'analyzing', 'synthesizing', 'complete'];
       const currentPhaseIndex = phases.indexOf(latestPhaseEvent.phase);
