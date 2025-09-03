@@ -184,12 +184,20 @@ function getIndustryDescription(industryName: string): string {
 /**
  * Process AI response and format questions
  */
-function processAIResponse(response: any, industryName: string): AIQuestion[] {
+interface AIResponse {
+  questions: Array<{
+    text: string;
+    category?: string;
+    estimatedValue?: string;
+  }>;
+}
+
+function processAIResponse(response: AIResponse, industryName: string): AIQuestion[] {
   if (!response.questions || !Array.isArray(response.questions)) {
     throw new Error('Invalid response format from AI');
   }
 
-  return response.questions.slice(0, AI_QUESTION_CONFIG.QUESTION_COUNT).map((q: any, index: number) => ({
+  return response.questions.slice(0, AI_QUESTION_CONFIG.QUESTION_COUNT).map((q, index: number) => ({
     id: `${industryName.toLowerCase().replace(/\s+/g, '-')}-q${index + 1}`,
     text: q.text,
     category: q.category || 'strategy',

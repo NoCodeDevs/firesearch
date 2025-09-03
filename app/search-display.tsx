@@ -8,9 +8,8 @@ import { getFaviconUrl, getDefaultFavicon, markFaviconFailed } from '@/lib/favic
 import { UI_CONFIG } from '@/lib/config';
 
 // Clean, modern progress indicator
-function ProgressIndicator({ steps, currentPhase, elapsedSeconds, sourcesFound }: {
+function ProgressIndicator({ steps, elapsedSeconds, sourcesFound }: {
   steps: SearchStep[];
-  currentPhase: SearchPhase | null;
   elapsedSeconds: number;
   sourcesFound: number;
 }) {
@@ -34,7 +33,7 @@ function ProgressIndicator({ steps, currentPhase, elapsedSeconds, sourcesFound }
       </div>
       
       <div className="space-y-3">
-        {steps.map((step, index) => (
+        {steps.map((step) => (
           <div key={step.id} className="flex items-center gap-3">
             <div className="flex-shrink-0">
               {step.status === 'completed' ? (
@@ -243,7 +242,7 @@ export function SearchDisplay({ events }: { events: SearchEvent[] }) {
   const [showFinalResult, setShowFinalResult] = useState(false);
   const [startTime, setStartTime] = useState<number | null>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
-  const [completedPhases, setCompletedPhases] = useState<Set<string>>(new Set());
+  const [, setCompletedPhases] = useState<Set<string>>(new Set());
   const [currentPhase, setCurrentPhase] = useState<SearchPhase | null>(null);
   const [scrapedCount, setScrapedCount] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);

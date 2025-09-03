@@ -681,7 +681,7 @@ function CommandHistory({ messages, isSearching }: { messages: Array<{ id: strin
         scrollbarColor: 'rgba(148, 163, 184, 0.3) transparent'
       }}
     >
-      {messages.map((msg, index) => (
+      {messages.map((msg) => (
         <div key={msg.id}>
           {msg.role === 'user' ? (
             <div className="flex items-start gap-4 group">
@@ -808,7 +808,7 @@ function HybridIndustrySelection({ onSelectIndustry }: { onSelectIndustry: (indu
           <div className="glass-premium rounded-3xl p-8 border border-white/10">
             <form onSubmit={handleCustomIndustrySubmit} className="space-y-6">
               <div className="text-center">
-                <h3 className="text-2xl font-bold text-white mb-2">Don't see your industry?</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">Don&apos;t see your industry?</h3>
                 <p className="text-slate-400 text-lg">Create a custom industry and get AI-generated research questions</p>
               </div>
               <div className="flex gap-4">
@@ -1554,37 +1554,7 @@ export function Chat() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isSearching) return;
 
-    const userMessage = input;
-    setInput('');
-
-    if (!hasApiKey) {
-      setPendingQuery(userMessage);
-      setShowApiKeyModal(true);
-      
-      const userMsgId = Date.now().toString();
-      setMessages(prev => [...prev, {
-        id: userMsgId,
-        role: 'user',
-        content: userMessage,
-        isSearch: true
-      }]);
-      return;
-    }
-
-    const userMsgId = Date.now().toString();
-    setMessages(prev => [...prev, {
-      id: userMsgId,
-      role: 'user',
-      content: userMessage,
-      isSearch: true
-    }]);
-
-    await performSearch(userMessage);
-  };
 
   const handleIndustrySelect = (industry: string) => {
     console.log('Industry selected:', industry);
@@ -1829,7 +1799,7 @@ export function Chat() {
                   <div className="max-w-3xl mx-auto mb-16">
                     <div className="glass-premium rounded-3xl p-8 border border-white/10">
                       <div className="text-center mb-6">
-                        <h3 className="text-xl font-bold text-white mb-2">Don't see your industry?</h3>
+                        <h3 className="text-xl font-bold text-white mb-2">Don&apos;t see your industry?</h3>
                         <p className="text-slate-400">Create a custom industry and get tailored research questions</p>
                       </div>
                       <form onSubmit={(e) => {
@@ -1927,7 +1897,7 @@ export function Chat() {
               Ask Your Own Question
             </DialogTitle>
             <DialogDescription className="text-slate-400">
-              Tell us what you'd like to research about {selectedIndustry ? (INDUSTRY_TEMPLATES[selectedIndustry as keyof typeof INDUSTRY_TEMPLATES]?.name || selectedIndustry.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')) : 'your industry'}.
+              Tell us what you&apos;d like to research about {selectedIndustry ? (INDUSTRY_TEMPLATES[selectedIndustry as keyof typeof INDUSTRY_TEMPLATES]?.name || selectedIndustry.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')) : 'your industry'}.
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleCustomQuestionSubmit} className="space-y-4">
