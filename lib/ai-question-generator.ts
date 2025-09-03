@@ -1,21 +1,6 @@
-import OpenAI from 'openai';
+import { generateText } from 'ai';
+import { openai } from '@ai-sdk/openai';
 import { AI_QUESTION_CONFIG } from './config';
-
-// Initialize OpenAI client with error handling
-let openai: OpenAI | null = null;
-
-try {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) {
-    console.error('OPENAI_API_KEY not found in environment variables');
-  } else {
-    openai = new OpenAI({
-      apiKey: apiKey,
-    });
-  }
-} catch (error) {
-  console.error('Failed to initialize OpenAI client:', error);
-}
 
 export interface AIQuestion {
   id: string;
@@ -42,33 +27,19 @@ export async function generateIndustryQuestions(
   industryName: string,
   industryDescription?: string
 ): Promise<IndustryQuestions> {
-  // Check if OpenAI client is available
-  if (!openai) {
-    console.error('OpenAI client not initialized - falling back to static questions');
-    return generateFallbackQuestions(industryName);
-  }
-
   const prompt = createQuestionGenerationPrompt(industryName, industryDescription);
 
   try {
-    const completion = await openai.chat.completions.create({
-      model: AI_QUESTION_CONFIG.MODEL,
-      messages: [
-        {
-          role: 'system',
-          content: `You are an expert market research consultant specializing in startup and entrepreneurial questions. Generate highly valuable, actionable research questions that entrepreneurs would actually want to know when building businesses in various industries.`
-        },
-        {
-          role: 'user',
-          content: prompt
-        }
-      ],
+    const result = await generateText({
+      model: openai(AI_QUESTION_CONFIG.MODEL),
+      prompt: `You are an expert market research consultant specializing in startup and entrepreneurial questions. Generate highly valuable, actionable research questions that entrepreneurs would actually want to know when building businesses in various industries.
+
+${prompt}`,
       temperature: AI_QUESTION_CONFIG.TEMPERATURE,
-      max_tokens: AI_QUESTION_CONFIG.MAX_TOKENS,
-      response_format: { type: 'json_object' }
+      maxTokens: AI_QUESTION_CONFIG.MAX_TOKENS,
     });
 
-    const content = completion.choices[0]?.message?.content;
+    const content = result.text;
     if (!content) {
       throw new Error('No response from OpenAI');
     }
@@ -83,7 +54,7 @@ export async function generateIndustryQuestions(
       metadata: {
         model: AI_QUESTION_CONFIG.MODEL,
         temperature: AI_QUESTION_CONFIG.TEMPERATURE,
-        totalTokens: completion.usage?.total_tokens || 0
+        totalTokens: result.usage?.totalTokens || 0
       }
     };
 
