@@ -422,7 +422,6 @@ export function SearchDisplay({ events }: { events: SearchEvent[] }) {
         <div className="lg:col-span-1">
           <ProgressIndicator 
             steps={steps} 
-            currentPhase={currentPhase} 
             elapsedSeconds={elapsedSeconds} 
             sourcesFound={scrapedCount} 
           />
